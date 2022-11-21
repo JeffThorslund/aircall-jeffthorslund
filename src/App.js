@@ -1,10 +1,36 @@
-import './App.css';
+import Header from "./components/Header";
+import styled from "styled-components";
+import {ScreenContent} from "./components/ScreenContent";
+
+const Container = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+`
+
+const SimulatedScreen = styled.div`
+  width: 376px;
+  height: 666px;
+  z-index: 100;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
+`
 
 function App() {
   return (
-    <div>
-      App
-    </div>
+      <Container>
+         <SimulatedScreen>
+             <Header />
+             <ScreenContent />
+         </SimulatedScreen>
+      </Container>
+
   );
 }
 
