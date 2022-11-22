@@ -2,6 +2,8 @@ import Header from "./components/Header";
 import styled from "styled-components";
 import { ScreenContent } from "./components/ScreenContent";
 import { useCalls } from "./_utils/useCalls";
+import { Grommet } from "grommet";
+import { theme } from "./theme";
 
 const Container = styled.div`
   position: absolute;
@@ -27,12 +29,14 @@ function App() {
   const { calls, setCalls, isLoading } = useCalls();
 
   return (
-    <Container>
-      <SimulatedScreen isLoading={isLoading}>
-        <Header />
-        <ScreenContent calls={calls} setCalls={setCalls} />
-      </SimulatedScreen>
-    </Container>
+    <Grommet theme={theme}>
+      <Container>
+        <SimulatedScreen isLoading={isLoading}>
+          <Header />
+          <ScreenContent calls={calls} setCalls={setCalls} />
+        </SimulatedScreen>
+      </Container>
+    </Grommet>
   );
 }
 
