@@ -1,3 +1,8 @@
+import { separateArchivedCalls } from "./separateArchivedCalls";
+
 test("blank", () => {
-  expect(true).toBe(true);
+  expect(separateArchivedCalls([])).toEqual({
+    archivedCalls: [],
+    activityCalls: [],
+  });
 });
