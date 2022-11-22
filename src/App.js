@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import styled from "styled-components";
-import {ScreenContent} from "./components/ScreenContent";
-import {useState} from "react";
+import { ScreenContent } from "./components/ScreenContent";
+import { useState } from "react";
 
 const Container = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ const Container = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-`
+`;
 
 const SimulatedScreen = styled.div`
   width: 376px;
@@ -21,20 +21,18 @@ const SimulatedScreen = styled.div`
   background: white;
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
-`
+`;
 
 function App() {
-
-    const [calls, setCalls] = useState([]);
+  const [calls, setCalls] = useState([]);
 
   return (
-      <Container>
-         <SimulatedScreen>
-             <Header />
-             <ScreenContent calls={calls} setCalls={setCalls}/>
-         </SimulatedScreen>
-      </Container>
-
+    <Container>
+      <SimulatedScreen>
+        <Header />
+        <ScreenContent calls={calls} setCalls={setCalls} />
+      </SimulatedScreen>
+    </Container>
   );
 }
 

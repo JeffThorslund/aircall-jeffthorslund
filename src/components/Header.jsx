@@ -7,13 +7,13 @@ const HeaderWrapper = styled.header`
   padding: 20px 0;
   text-align: center;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-`
+`;
 
 const SVG = styled.svg`
   display: block;
   width: 100%;
   height: 100%;
-`
+`;
 
 const Header = () => {
   return (
