@@ -1,8 +1,7 @@
 import Header from "./components/Header";
 import styled from "styled-components";
 import { ScreenContent } from "./components/ScreenContent";
-import { useEffect, useState } from "react";
-import { getAllCalls } from "./requests";
+import { useCalls } from "./_utils/useCalls";
 
 const Container = styled.div`
   position: absolute;
@@ -25,18 +24,7 @@ const SimulatedScreen = styled.div`
 `;
 
 function App() {
-  const [calls, setCalls] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getAllCalls()
-      .then((data) => setCalls(data))
-      .catch(console.error)
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+  const { calls, setCalls, isLoading } = useCalls();
 
   return (
     <Container>
