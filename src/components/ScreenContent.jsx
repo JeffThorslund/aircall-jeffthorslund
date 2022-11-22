@@ -1,51 +1,38 @@
 import styled from "styled-components";
 import { archiveCallById, getAllCalls } from "../requests";
+import { separateArchivedCalls } from "./_utils/separateArchivedCalls";
+import { CallsDisplay } from "./CallsDisplay";
 
 const ContentWrapper = styled.div`
   padding: 20px;
 `;
 
 export const ScreenContent = ({ calls, setCalls }) => {
+  const { activityCalls, archivedCalls } = separateArchivedCalls(calls);
+
   return (
     <ContentWrapper>
-      <div>
-        Activity
-        {calls
-          .filter((c) => !c.is_archived)
-          .map((c) => (
-            <div
-              onClick={() => {
-                archiveCallById(c.id, true).then(() => {
-                  getAllCalls().then((calls) => setCalls(calls));
-                });
-              }}
-              className={"item"}
-              key={c.id}
-            >
-              {c.from}
-            </div>
-          ))}
-      </div>
+      <CallsDisplay
+        title={"Activity"}
+        calls={activityCalls}
+        onClick={(call) => {
+          archiveCallById(call.id, true).then(() => {
+            getAllCalls().then((calls) => setCalls(calls));
+          });
+        }}
+        color={"black"}
+      />
 
-      <div>
-        Archived
-        {calls
-          .filter((c) => c.is_archived)
-          .map((c) => (
-            <div
-              className={"item"}
-              onClick={() =>
-                archiveCallById(c.id, false).then(() => {
-                  getAllCalls().then((calls) => setCalls(calls));
-                })
-              }
-              style={{ color: "red" }}
-              key={c.id}
-            >
-              {c.from}
-            </div>
-          ))}
-      </div>
+      <CallsDisplay
+        title={"Archived"}
+        calls={archivedCalls}
+        onClick={(call) => {
+          archiveCallById(call.id, false).then(() => {
+            getAllCalls().then((calls) => setCalls(calls));
+          });
+        }}
+        color={"red"}
+      />
     </ContentWrapper>
   );
 };
