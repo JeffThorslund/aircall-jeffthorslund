@@ -19,23 +19,28 @@ const SimulatedScreen = styled.div`
   width: 376px;
   height: 666px;
   z-index: 100;
-  background: white;
+  background: ${(p) => (p.isLoading ? "blue" : "white")};
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
 `;
 
 function App() {
   const [calls, setCalls] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     getAllCalls()
       .then((data) => setCalls(data))
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <Container>
-      <SimulatedScreen>
+      <SimulatedScreen isLoading={isLoading}>
         <Header />
         <ScreenContent calls={calls} setCalls={setCalls} />
       </SimulatedScreen>

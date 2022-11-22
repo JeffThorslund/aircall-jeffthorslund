@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const Pop = ({ call, color, onClick }) => {
+export const CallTile = ({ call, color, onClick }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div
       onClick={() => {
         setIsLoading(true);
-        onClick(call).then(() => {
+        onClick(call).finally(() => {
           setIsLoading(false);
         });
       }}
@@ -19,5 +19,3 @@ const Pop = ({ call, color, onClick }) => {
     </div>
   );
 };
-
-export { Pop };

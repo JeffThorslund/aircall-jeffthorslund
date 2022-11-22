@@ -1,4 +1,4 @@
-import { Pop } from "./Pop";
+import { CallTile } from "./CallTile";
 
 export const CallsDisplay = ({ title, calls, onClick, color }) => {
   return (
@@ -6,7 +6,7 @@ export const CallsDisplay = ({ title, calls, onClick, color }) => {
       <div>{title}</div>
       <div>
         {calls.map((c) => (
-          <Pop call={c} color={color} onClick={onClick} key={c.id} />
+          <CallTile call={c} color={color} onClick={onClick} key={c.id} />
         ))}
       </div>
     </div>
