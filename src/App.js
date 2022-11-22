@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import styled from "styled-components";
 import {ScreenContent} from "./components/ScreenContent";
+import {useState} from "react";
 
 const Container = styled.div`
   position: absolute;
@@ -23,11 +24,14 @@ const SimulatedScreen = styled.div`
 `
 
 function App() {
+
+    const [calls, setCalls] = useState([]);
+
   return (
       <Container>
          <SimulatedScreen>
              <Header />
-             <ScreenContent />
+             <ScreenContent calls={calls} setCalls={setCalls}/>
          </SimulatedScreen>
       </Container>
 
