@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { archiveCallById, getAllCalls } from "../requests";
+import { archiveCallById } from "../requests";
 import { separateArchivedCalls } from "./_utils/separateArchivedCalls";
 import { CallsDisplay } from "./CallsDisplay";
 
@@ -15,22 +15,16 @@ export const ScreenContent = ({ calls, setCalls }) => {
       <CallsDisplay
         title={"Activity"}
         calls={activityCalls}
-        onClick={(call) => {
-          archiveCallById(call.id, true).then(() => {
-            getAllCalls().then((calls) => setCalls(calls));
-          });
-        }}
+        setCalls={setCalls}
+        onClick={(call) => archiveCallById(call.id, true)}
         color={"black"}
       />
 
       <CallsDisplay
         title={"Archived"}
         calls={archivedCalls}
-        onClick={(call) => {
-          archiveCallById(call.id, false).then(() => {
-            getAllCalls().then((calls) => setCalls(calls));
-          });
-        }}
+        setCalls={setCalls}
+        onClick={(call) => archiveCallById(call.id, false)}
         color={"red"}
       />
     </ContentWrapper>
