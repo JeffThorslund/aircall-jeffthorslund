@@ -3,9 +3,7 @@ const AIRCALL_ENDPOINT = "https://aircall-job.herokuapp.com";
 export const getAllCalls = () => {
   const createEndpoint = () => AIRCALL_ENDPOINT + "/activities";
 
-  return fetch(createEndpoint())
-    .then((response) => response.json())
-    .then((data) => data);
+  return fetch(createEndpoint()).then((response) => response.json());
 };
 
 export const getCallById = (id) => {
