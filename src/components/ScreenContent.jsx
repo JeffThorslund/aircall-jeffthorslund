@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const TabToggle = ({ currentScreenView, setCurrentScreenView }) => {
   return (
-    <Box direction={"row"} justify={"around"}>
+    <Box direction={"row"} justify={"around"} pad={"medium"}>
       <Button
         primary={currentScreenView === CALL_STATUS.IS_NOT_ARCHIVED}
         label={"Activity"}
@@ -33,33 +33,36 @@ export const ScreenContent = ({ calls, setCalls }) => {
   );
 
   return (
-    <Box>
-      {(() => {
-        switch (currentScreenView) {
-          case CALL_STATUS.IS_NOT_ARCHIVED:
-            return (
-              <CallsDisplay
-                title={"Activity"}
-                calls={activityCalls}
-                setCalls={setCalls}
-                onClick={(call) => archiveCallById(call.id, true)}
-                color={"black"}
-              />
-            );
-          case CALL_STATUS.IS_ARCHIVED:
-            return (
-              <CallsDisplay
-                title={"Archived"}
-                calls={archivedCalls}
-                setCalls={setCalls}
-                onClick={(call) => archiveCallById(call.id, false)}
-                color={"red"}
-              />
-            );
-          default:
-            <Box>Uh Oh</Box>;
-        }
-      })()}
+    <Box flex={"grow"}>
+      <Box flex={"grow"}>
+        {(() => {
+          switch (currentScreenView) {
+            case CALL_STATUS.IS_NOT_ARCHIVED:
+              return (
+                <CallsDisplay
+                  title={"Activity"}
+                  calls={activityCalls}
+                  setCalls={setCalls}
+                  onClick={(call) => archiveCallById(call.id, true)}
+                  color={"black"}
+                />
+              );
+            case CALL_STATUS.IS_ARCHIVED:
+              return (
+                <CallsDisplay
+                  title={"Archived"}
+                  calls={archivedCalls}
+                  setCalls={setCalls}
+                  onClick={(call) => archiveCallById(call.id, false)}
+                  color={"red"}
+                />
+              );
+            default:
+              <Box>Uh Oh</Box>;
+          }
+        })()}
+      </Box>
+
       <TabToggle
         currentScreenView={currentScreenView}
         setCurrentScreenView={setCurrentScreenView}

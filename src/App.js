@@ -23,6 +23,8 @@ const SimulatedScreen = styled.div`
   background: ${(p) => (p.isLoading ? "blue" : "white")};
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
 `;
 
 function App() {
