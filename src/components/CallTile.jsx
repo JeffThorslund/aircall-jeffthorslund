@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Box } from "grommet";
+import { Box, Text } from "grommet";
 import { DetailOverlay } from "./DetailOverlay";
+import { Archive } from "grommet-icons";
 
 export const CallTile = ({ call, color, onClick }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,12 +17,14 @@ export const CallTile = ({ call, color, onClick }) => {
       ) : null}
       <Box
         onClick={() => setIsDetailOverlayVisible(true)}
-        className={"item"}
         key={call.id}
         style={{ color: isLoading ? "pink" : color }}
+        direction={"row"}
+        justify={"between"}
+        pad={{ horizontal: "small", vertical: "xxsmall" }}
       >
-        {call.from}
-        <ArchiveIcon
+        <Text>{call.from}</Text>
+        <Archive
           onClick={(e) => {
             e.stopPropagation();
             setIsLoading(true);
@@ -33,8 +36,4 @@ export const CallTile = ({ call, color, onClick }) => {
       </Box>
     </>
   );
-};
-
-const ArchiveIcon = ({ onClick }) => {
-  return <Box onClick={onClick}>A</Box>;
 };
