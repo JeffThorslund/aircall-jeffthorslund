@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { Box, Header, Text } from "grommet";
+import { Box } from "grommet";
 import { Close } from "grommet-icons";
+import { PageHeader } from "./PageHeader";
 
 export const DetailOverlayWrapper = styled.div`
   position: absolute;
@@ -28,9 +29,7 @@ export const DetailOverlay = ({ onClick, call }) => {
   return (
     <DetailOverlayWrapper>
       <CloseInterface onClick={onClick} />
-      <Header justify={"center"}>
-        <Text size={"large"}>Call Details</Text>
-      </Header>
+      <PageHeader label={"Call Details"} />
       <ValuePresenter label={"From"} value={call.from} />
       <ValuePresenter label={"Via"} value={call.via} />
       <ValuePresenter label={"To"} value={call.to} />

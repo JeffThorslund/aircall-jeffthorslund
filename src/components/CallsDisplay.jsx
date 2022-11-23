@@ -1,10 +1,11 @@
 import { CallTile } from "./CallTile";
 import { replaceCallWithUpdatedCall } from "../_utils/replaceCallWithUpdatedCall";
+import { PageHeader } from "./PageHeader";
 
 export const CallsDisplay = ({ title, calls, onClick, color, setCalls }) => {
   return (
     <div>
-      <div>{title}</div>
+      <PageHeader label={title} />
       <div>
         {calls.map((c) => (
           <CallTile
