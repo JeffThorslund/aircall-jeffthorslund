@@ -1,5 +1,5 @@
 import { archiveCallById } from "../requests";
-import { separateArchivedCalls } from "./_utils/separateArchivedCalls";
+import { separateArchivedCalls } from "../_utils/separateArchivedCalls";
 import { CallsDisplay } from "./CallsDisplay";
 import { Box, Button } from "grommet";
 import { useState } from "react";
