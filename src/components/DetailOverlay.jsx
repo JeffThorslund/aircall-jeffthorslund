@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Box } from "grommet";
 import { Close } from "grommet-icons";
 import { PageHeader } from "./PageHeader";
+import { primaryLighter, primaryLightest } from "../_utils/colors";
 
 export const DetailOverlayWrapper = styled.div`
   position: absolute;
@@ -10,7 +11,7 @@ export const DetailOverlayWrapper = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 3px;
-  background-color: bisque;
+  background-color: ${primaryLightest};
 `;
 
 /**
@@ -30,21 +31,28 @@ export const DetailOverlay = ({ onClick, call }) => {
     <DetailOverlayWrapper>
       <CloseInterface onClick={onClick} />
       <PageHeader label={"Call Details"} />
-      <ValuePresenter label={"From"} value={call.from} />
-      <ValuePresenter label={"Via"} value={call.via} />
-      <ValuePresenter label={"To"} value={call.to} />
-      <ValuePresenter
-        label={"Call Duration"}
-        value={call.duration}
-        mutation={(seconds) =>
-          new Date(seconds * 1000).toISOString().substring(14, 19)
-        }
-      />
-      <ValuePresenter
-        label={"At"}
-        value={call.created_at}
-        mutation={(time) => new Date(time).toLocaleString()}
-      />
+      <Box
+        pad={{ horizontal: "small", vertical: "xsmall" }}
+        margin={"xsmall"}
+        round={"xsmall"}
+        background={primaryLighter.hex()}
+      >
+        <ValuePresenter label={"From"} value={call.from} />
+        <ValuePresenter label={"Via"} value={call.via} />
+        <ValuePresenter label={"To"} value={call.to} />
+        <ValuePresenter
+          label={"Call Duration"}
+          value={call.duration}
+          mutation={(seconds) =>
+            new Date(seconds * 1000).toISOString().substring(14, 19)
+          }
+        />
+        <ValuePresenter
+          label={"At"}
+          value={call.created_at}
+          mutation={(time) => new Date(time).toLocaleString()}
+        />
+      </Box>
     </DetailOverlayWrapper>
   );
 };
@@ -52,7 +60,9 @@ export const DetailOverlay = ({ onClick, call }) => {
 export const CloseInterface = ({ onClick }) => {
   return (
     <Box direction={"row"} justify={"end"} pad={"small"}>
-      <Close onClick={onClick} />
+      <Box onClick={onClick}>
+        <Close />
+      </Box>
     </Box>
   );
 };

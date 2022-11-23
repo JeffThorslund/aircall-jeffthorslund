@@ -7,7 +7,7 @@ export const CallsDisplay = ({ title, calls, onClick, setCalls, Icon }) => {
   return (
     <div>
       <PageHeader label={title} />
-      <div>
+      <Box pad={"xsmall"}>
         {calls.length ? (
           calls.map((c) => (
             <CallTile
@@ -24,7 +24,7 @@ export const CallsDisplay = ({ title, calls, onClick, setCalls, Icon }) => {
         ) : (
           <NoResultsToDisplay />
         )}
-      </div>
+      </Box>
     </div>
   );
 };

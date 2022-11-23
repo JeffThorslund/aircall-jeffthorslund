@@ -12,11 +12,13 @@ const TabToggle = ({ currentScreenView, setCurrentScreenView }) => {
         primary={currentScreenView === CALL_STATUS.IS_NOT_ARCHIVED}
         label={"Activity"}
         onClick={() => setCurrentScreenView(CALL_STATUS.IS_NOT_ARCHIVED)}
+        size={"large"}
       />
       <Button
         primary={currentScreenView === CALL_STATUS.IS_ARCHIVED}
         label={"Archived"}
         onClick={() => setCurrentScreenView(CALL_STATUS.IS_ARCHIVED)}
+        size={"large"}
       />
     </Box>
   );

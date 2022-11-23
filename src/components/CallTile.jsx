@@ -3,6 +3,7 @@ import { Box, Text } from "grommet";
 import { DetailOverlay } from "./DetailOverlay";
 import styled from "styled-components";
 import { dark, primaryLight, primaryLighter } from "../_utils/colors";
+import { TextWrapper } from "./TextWrapper";
 
 const CallTitleWrapper = styled(Box)`
   color: ${(p) => (p.isLoading ? "pink" : dark)};
@@ -28,34 +29,33 @@ export const CallTile = ({ call, onClick, Icon }) => {
         />
       ) : null}
       <CallTitleWrapper
-        onClick={() => setIsDetailOverlayVisible(true)}
         isLoading={isLoading}
         direction={"row"}
         justify={"between"}
       >
-        <LabelWrapper
+        <TextWrapper
+          onClick={() => setIsDetailOverlayVisible(true)}
           pad={{ horizontal: "small", vertical: "xsmall" }}
           margin={"xsmall"}
           round={"xsmall"}
           flex={"grow"}
         >
           <Text>{call.from}</Text>
-        </LabelWrapper>
+        </TextWrapper>
 
         <LabelWrapper
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsLoading(true);
+            onClick(call).finally(() => {
+              setIsLoading(false);
+            });
+          }}
           pad={{ horizontal: "small", vertical: "xsmall" }}
           margin={"xsmall"}
           round={"xsmall"}
         >
-          <Icon
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsLoading(true);
-              onClick(call).finally(() => {
-                setIsLoading(false);
-              });
-            }}
-          />
+          <Icon />
         </LabelWrapper>
       </CallTitleWrapper>
     </>
