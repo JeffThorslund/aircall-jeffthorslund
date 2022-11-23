@@ -10,6 +10,6 @@ export const DetailOverlayWrapper = styled.div`
   background-color: bisque;
 `;
 
-export const DetailOverlay = () => {
-  return <DetailOverlayWrapper>hi</DetailOverlayWrapper>;
+export const DetailOverlay = ({ onClick }) => {
+  return <DetailOverlayWrapper onClick={onClick}>hi</DetailOverlayWrapper>;
 };

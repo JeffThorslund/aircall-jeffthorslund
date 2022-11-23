@@ -8,21 +8,30 @@ export const CallTile = ({ call, color, onClick }) => {
 
   return (
     <>
-      {isDetailOverlayVisible ? <DetailOverlay /> : null}
+      {isDetailOverlayVisible ? (
+        <DetailOverlay onClick={() => setIsDetailOverlayVisible(false)} />
+      ) : null}
       <Box
-        onClick={() => {
-          setIsDetailOverlayVisible(true);
-          setIsLoading(true);
-          onClick(call).finally(() => {
-            setIsLoading(false);
-          });
-        }}
+        onClick={() => setIsDetailOverlayVisible(true)}
         className={"item"}
         key={call.id}
         style={{ color: isLoading ? "pink" : color }}
       >
         {call.from}
+        <ArchiveIcon
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsLoading(true);
+            onClick(call).finally(() => {
+              setIsLoading(false);
+            });
+          }}
+        />
       </Box>
     </>
   );
+};
+
+const ArchiveIcon = ({ onClick }) => {
+  return <Box onClick={onClick}>A</Box>;
 };

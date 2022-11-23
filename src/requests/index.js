@@ -27,9 +27,7 @@ export const archiveCallById = (id, newArchiveState) => {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then((response) => response.json())
-    .then((data) => data);
+  }).then((response) => response.json());
 };
 
 export const resetCallsToInitialState = () => {
