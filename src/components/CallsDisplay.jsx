@@ -3,7 +3,14 @@ import { replaceCallWithUpdatedCall } from "../_utils/replaceCallWithUpdatedCall
 import { PageHeader } from "./PageHeader";
 import { Box } from "grommet";
 
-export const CallsDisplay = ({ title, calls, onClick, color, setCalls }) => {
+export const CallsDisplay = ({
+  title,
+  calls,
+  onClick,
+  color,
+  setCalls,
+  Icon,
+}) => {
   return (
     <div>
       <PageHeader label={title} />
@@ -19,6 +26,7 @@ export const CallsDisplay = ({ title, calls, onClick, color, setCalls }) => {
                 )
               }
               key={c.id}
+              Icon={Icon}
             />
           ))
         ) : (
