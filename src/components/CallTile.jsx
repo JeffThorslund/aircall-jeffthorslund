@@ -9,7 +9,10 @@ export const CallTile = ({ call, color, onClick }) => {
   return (
     <>
       {isDetailOverlayVisible ? (
-        <DetailOverlay onClick={() => setIsDetailOverlayVisible(false)} />
+        <DetailOverlay
+          onClick={() => setIsDetailOverlayVisible(false)}
+          call={call}
+        />
       ) : null}
       <Box
         onClick={() => setIsDetailOverlayVisible(true)}
