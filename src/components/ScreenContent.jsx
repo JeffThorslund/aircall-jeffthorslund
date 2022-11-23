@@ -58,7 +58,7 @@ export const ScreenContent = ({ calls, setCalls }) => {
                 />
               );
             default:
-              <Box>Uh Oh</Box>;
+              return <Box>Uh Oh</Box>;
           }
         })()}
       </Box>
