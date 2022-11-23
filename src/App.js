@@ -17,6 +17,7 @@ const Container = styled.div`
 `;
 
 const SimulatedScreen = styled.div`
+  position: absolute;
   width: 376px;
   height: 666px;
   background: ${(p) => (p.isLoading ? "blue" : "white")};
