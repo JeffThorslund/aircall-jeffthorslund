@@ -1,13 +1,9 @@
 import { useState } from "react";
-import { Box, Text } from "grommet";
+import { Box, Spinner, Text } from "grommet";
 import { DetailOverlay } from "./DetailOverlay";
 import styled from "styled-components";
-import { dark, primaryLight, primaryLighter } from "../_utils/colors";
+import { primaryLight, primaryLighter } from "../_utils/colors";
 import { TextWrapper } from "./TextWrapper";
-
-const CallTitleWrapper = styled(Box)`
-  color: ${(p) => (p.isLoading ? "pink" : dark)};
-`;
 
 const LabelWrapper = styled(Box)`
   background-color: ${primaryLighter};
@@ -28,11 +24,7 @@ export const CallTile = ({ call, onClick, Icon }) => {
           call={call}
         />
       ) : null}
-      <CallTitleWrapper
-        isLoading={isLoading}
-        direction={"row"}
-        justify={"between"}
-      >
+      <Box isLoading={isLoading} direction={"row"} justify={"between"}>
         <TextWrapper
           onClick={() => setIsDetailOverlayVisible(true)}
           pad={{ horizontal: "small", vertical: "xsmall" }}
@@ -54,10 +46,11 @@ export const CallTile = ({ call, onClick, Icon }) => {
           pad={{ horizontal: "small", vertical: "xsmall" }}
           margin={"xsmall"}
           round={"xsmall"}
+          justify={"center"}
         >
-          <Icon />
+          {!isLoading ? <Icon /> : <Spinner size={"xsmall"} pad={"none"} />}
         </LabelWrapper>
-      </CallTitleWrapper>
+      </Box>
     </>
   );
 };

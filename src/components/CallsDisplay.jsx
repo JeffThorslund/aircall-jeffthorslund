@@ -13,9 +13,9 @@ export const CallsDisplay = ({ title, calls, onClick, setCalls, Icon }) => {
             <CallTile
               call={c}
               onClick={() =>
-                onClick(c).then((newCall) =>
-                  replaceCallWithUpdatedCall(setCalls, newCall)
-                )
+                onClick(c).then((newCall) => {
+                  replaceCallWithUpdatedCall(setCalls, newCall);
+                })
               }
               key={c.id}
               Icon={Icon}
