@@ -16,7 +16,7 @@ const Header = () => {
       <Swim size={"large"} color={secondary.hex()} pad={"small"} />
       <Box pad={"small"}>
         <Text size={"xxlarge"} color={primaryDarker.hex()}>
-          Arch-Dive Virtual
+          ArchDive Virtual
         </Text>
         <Text size={"large"} color={primaryDarker.hex()}>
           We love to archive!
