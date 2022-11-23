@@ -1,7 +1,7 @@
 import { NoResultsToDisplay } from "./NoResultsToDisplay";
 import { Box } from "grommet";
 import { CallTile } from "./CallTile";
-import { replaceCallWithUpdatedCall } from "../../_utils/replaceCallWithUpdatedCall";
+import { replaceCallWithUpdatedCall } from "./_utils/replaceCallWithUpdatedCall";
 
 export const Calls = ({ calls, onClick, setCalls, Icon }) => {
   if (!calls.length) return <NoResultsToDisplay />;

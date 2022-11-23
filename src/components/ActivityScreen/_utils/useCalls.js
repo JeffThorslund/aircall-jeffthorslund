@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllCalls } from "../requests";
+import { getAllCalls } from "../../../_utils/requests";
 
 export const useCalls = () => {
   const [calls, setCalls] = useState([]);

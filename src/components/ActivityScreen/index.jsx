@@ -1,8 +1,8 @@
-import { useCalls } from "../../_utils/useCalls";
-import { separateArchivedCalls } from "../../_utils/separateArchivedCalls";
+import { useCalls } from "./_utils/useCalls";
+import { separateArchivedCalls } from "./_utils/separateArchivedCalls";
 import { useState } from "react";
 import { Box } from "grommet";
-import { archiveCallById } from "../../requests";
+import { archiveCallById } from "../../_utils/requests";
 import { Archive, Revert } from "grommet-icons";
 import { ScreenToggleButtons } from "./ScreenToggleButtons";
 import { SCREEN_STATES } from "./_utils/screenStates";
