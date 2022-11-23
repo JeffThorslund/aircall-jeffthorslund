@@ -4,6 +4,7 @@ import { CallsDisplay } from "./CallsDisplay";
 import { Box, Button } from "grommet";
 import { useState } from "react";
 import { Archive, Revert } from "grommet-icons";
+import { useCalls } from "../_utils/useCalls";
 
 const TabToggle = ({ currentScreenView, setCurrentScreenView }) => {
   return (
@@ -29,7 +30,8 @@ const CALL_STATUS = {
   IS_NOT_ARCHIVED: "isNotArchived",
 };
 
-export const ScreenContent = ({ calls, setCalls }) => {
+export const ScreenContent = () => {
+  const { calls, setCalls, isLoading } = useCalls();
   const { activityCalls, archivedCalls } = separateArchivedCalls(calls);
   const [currentScreenView, setCurrentScreenView] = useState(
     CALL_STATUS.IS_NOT_ARCHIVED
@@ -48,6 +50,7 @@ export const ScreenContent = ({ calls, setCalls }) => {
                   setCalls={setCalls}
                   onClick={(call) => archiveCallById(call.id, true)}
                   Icon={Archive}
+                  isLoading={isLoading}
                 />
               );
             case CALL_STATUS.IS_ARCHIVED:
@@ -58,6 +61,7 @@ export const ScreenContent = ({ calls, setCalls }) => {
                   setCalls={setCalls}
                   onClick={(call) => archiveCallById(call.id, false)}
                   Icon={Revert}
+                  isLoading={isLoading}
                 />
               );
             default:

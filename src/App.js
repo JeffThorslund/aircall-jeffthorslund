@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import styled from "styled-components";
 import { ScreenContent } from "./components/ScreenContent";
-import { useCalls } from "./_utils/useCalls";
 import { Grommet } from "grommet";
 import { theme } from "./theme";
 import { primaryLightest, secondary } from "./_utils/colors";
@@ -33,14 +32,12 @@ const SimulatedScreen = styled.div`
 `;
 
 function App() {
-  const { calls, setCalls, isLoading } = useCalls();
-
   return (
     <Grommet theme={theme}>
       <Container>
-        <SimulatedScreen isLoading={isLoading}>
+        <SimulatedScreen>
           <Header />
-          <ScreenContent calls={calls} setCalls={setCalls} />
+          <ScreenContent />
         </SimulatedScreen>
       </Container>
     </Grommet>
