@@ -1,40 +1,18 @@
-import { archiveCallById } from "../requests";
-import { separateArchivedCalls } from "../_utils/separateArchivedCalls";
-import { CallsDisplay } from "./CallsDisplay";
-import { Box, Button } from "grommet";
+import { useCalls } from "../../_utils/useCalls";
+import { separateArchivedCalls } from "../../_utils/separateArchivedCalls";
 import { useState } from "react";
+import { Box } from "grommet";
+import { archiveCallById } from "../../requests";
 import { Archive, Revert } from "grommet-icons";
-import { useCalls } from "../_utils/useCalls";
+import { ScreenToggleButtons } from "./ScreenToggleButtons";
+import { SCREEN_STATES } from "./_utils/screenStates";
+import { CallsLayout } from "../CallsLayout";
 
-const TabToggle = ({ currentScreenView, setCurrentScreenView }) => {
-  return (
-    <Box direction={"row"} justify={"around"} pad={"medium"}>
-      <Button
-        primary={currentScreenView === CALL_STATUS.IS_NOT_ARCHIVED}
-        label={"Activity"}
-        onClick={() => setCurrentScreenView(CALL_STATUS.IS_NOT_ARCHIVED)}
-        size={"large"}
-      />
-      <Button
-        primary={currentScreenView === CALL_STATUS.IS_ARCHIVED}
-        label={"Archived"}
-        onClick={() => setCurrentScreenView(CALL_STATUS.IS_ARCHIVED)}
-        size={"large"}
-      />
-    </Box>
-  );
-};
-
-const CALL_STATUS = {
-  IS_ARCHIVED: "isArchived",
-  IS_NOT_ARCHIVED: "isNotArchived",
-};
-
-export const ScreenContent = () => {
+export const ActivityScreen = () => {
   const { calls, setCalls, isLoading } = useCalls();
   const { activityCalls, archivedCalls } = separateArchivedCalls(calls);
   const [currentScreenView, setCurrentScreenView] = useState(
-    CALL_STATUS.IS_NOT_ARCHIVED
+    SCREEN_STATES.IS_NOT_ARCHIVED
   );
 
   return (
@@ -42,9 +20,9 @@ export const ScreenContent = () => {
       <Box flex={"grow"}>
         {(() => {
           switch (currentScreenView) {
-            case CALL_STATUS.IS_NOT_ARCHIVED:
+            case SCREEN_STATES.IS_NOT_ARCHIVED:
               return (
-                <CallsDisplay
+                <CallsLayout
                   title={"Activity"}
                   calls={activityCalls}
                   setCalls={setCalls}
@@ -53,9 +31,9 @@ export const ScreenContent = () => {
                   isLoading={isLoading}
                 />
               );
-            case CALL_STATUS.IS_ARCHIVED:
+            case SCREEN_STATES.IS_ARCHIVED:
               return (
-                <CallsDisplay
+                <CallsLayout
                   title={"Archived"}
                   calls={archivedCalls}
                   setCalls={setCalls}
@@ -70,7 +48,7 @@ export const ScreenContent = () => {
         })()}
       </Box>
 
-      <TabToggle
+      <ScreenToggleButtons
         currentScreenView={currentScreenView}
         setCurrentScreenView={setCurrentScreenView}
       />

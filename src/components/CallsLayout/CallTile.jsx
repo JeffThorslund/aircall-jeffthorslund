@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Box, Spinner, Text } from "grommet";
-import { DetailOverlay } from "./DetailOverlay";
+import { DetailOverlay } from "../DetailOverlay";
 import styled from "styled-components";
-import { primaryLight, primaryLighter } from "../_utils/colors";
-import { TextWrapper } from "./TextWrapper";
+import { primaryLight, primaryLighter } from "../../_utils/colors";
+import { CallTileWrapper } from "./CallTileWrapper";
 
 const LabelWrapper = styled(Box)`
   background-color: ${primaryLighter};
@@ -25,7 +25,7 @@ export const CallTile = ({ call, onClick, Icon }) => {
         />
       ) : null}
       <Box isLoading={isLoading} direction={"row"} justify={"between"}>
-        <TextWrapper
+        <CallTileWrapper
           onClick={() => setIsDetailOverlayVisible(true)}
           pad={{ horizontal: "small", vertical: "xsmall" }}
           margin={"xsmall"}
@@ -33,7 +33,7 @@ export const CallTile = ({ call, onClick, Icon }) => {
           flex={"grow"}
         >
           <Text>{call.from}</Text>
-        </TextWrapper>
+        </CallTileWrapper>
 
         <LabelWrapper
           onClick={(e) => {

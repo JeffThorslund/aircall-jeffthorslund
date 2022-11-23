@@ -6,14 +6,6 @@ export const getAllCalls = () => {
   return fetch(createEndpoint()).then((response) => response.json());
 };
 
-export const getCallById = (id) => {
-  const createEndpoint = (id) => AIRCALL_ENDPOINT + "/activities/" + id;
-
-  fetch(createEndpoint(id))
-    .then((response) => response.json())
-    .then((data) => console.log(data));
-};
-
 export const archiveCallById = (id, newArchiveState) => {
   const createEndpoint = (id) => AIRCALL_ENDPOINT + "/activities/" + id;
 
@@ -28,12 +20,4 @@ export const archiveCallById = (id, newArchiveState) => {
       "Content-Type": "application/json",
     },
   }).then((response) => response.json());
-};
-
-export const resetCallsToInitialState = () => {
-  const createEndpoint = () => AIRCALL_ENDPOINT + "/reset";
-
-  fetch(createEndpoint())
-    .then((response) => response.json())
-    .then((data) => console.log(data));
 };

@@ -1,9 +1,9 @@
 import Header from "./components/Header";
 import styled from "styled-components";
-import { ScreenContent } from "./components/ScreenContent";
 import { Grommet } from "grommet";
 import { theme } from "./theme";
-import { primaryLightest, secondary } from "./_utils/colors";
+import { primaryLightest } from "./_utils/colors";
+import { ActivityScreen } from "./components/ActivityScreen";
 
 const Container = styled.div`
   position: absolute;
@@ -20,11 +20,7 @@ const SimulatedScreen = styled.div`
   position: absolute;
   width: 376px;
   height: 666px;
-  background: linear-gradient(
-    0deg,
-    ${primaryLightest.hex()},
-    ${secondary.lighten(0.8).hex()}
-  );
+  background: ${primaryLightest.hex()};
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
   display: flex;
@@ -37,7 +33,7 @@ function App() {
       <Container>
         <SimulatedScreen>
           <Header />
-          <ScreenContent />
+          <ActivityScreen />
         </SimulatedScreen>
       </Container>
     </Grommet>

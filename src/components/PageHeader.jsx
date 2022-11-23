@@ -1,10 +1,10 @@
 import { Header, Text } from "grommet";
-import { primaryDarker } from "../_utils/colors";
+import { primaryDark } from "../_utils/colors";
 
 export const PageHeader = ({ label }) => {
   return (
     <Header direction={"row"} justify={"center"} pad={"small"}>
-      <Text size={"xlarge"} color={primaryDarker.hex()}>
+      <Text size={"xlarge"} color={primaryDark.hex()}>
         {label}
       </Text>
     </Header>
