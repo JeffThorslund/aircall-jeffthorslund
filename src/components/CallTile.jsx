@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Box } from "grommet";
 
 export const CallTile = ({ call, color, onClick }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div
+    <Box
       onClick={() => {
         setIsLoading(true);
         onClick(call).finally(() => {
@@ -16,6 +17,6 @@ export const CallTile = ({ call, color, onClick }) => {
       style={{ color: isLoading ? "pink" : color }}
     >
       {call.from}
-    </div>
+    </Box>
   );
 };
