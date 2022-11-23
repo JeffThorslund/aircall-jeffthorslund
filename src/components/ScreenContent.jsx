@@ -45,7 +45,6 @@ export const ScreenContent = ({ calls, setCalls }) => {
                   calls={activityCalls}
                   setCalls={setCalls}
                   onClick={(call) => archiveCallById(call.id, true)}
-                  color={"black"}
                   Icon={Archive}
                 />
               );
@@ -56,7 +55,6 @@ export const ScreenContent = ({ calls, setCalls }) => {
                   calls={archivedCalls}
                   setCalls={setCalls}
                   onClick={(call) => archiveCallById(call.id, false)}
-                  color={"red"}
                   Icon={Revert}
                 />
               );

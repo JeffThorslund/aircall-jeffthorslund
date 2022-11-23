@@ -3,14 +3,7 @@ import { replaceCallWithUpdatedCall } from "../_utils/replaceCallWithUpdatedCall
 import { PageHeader } from "./PageHeader";
 import { Box } from "grommet";
 
-export const CallsDisplay = ({
-  title,
-  calls,
-  onClick,
-  color,
-  setCalls,
-  Icon,
-}) => {
+export const CallsDisplay = ({ title, calls, onClick, setCalls, Icon }) => {
   return (
     <div>
       <PageHeader label={title} />
@@ -19,7 +12,6 @@ export const CallsDisplay = ({
           calls.map((c) => (
             <CallTile
               call={c}
-              color={color}
               onClick={() =>
                 onClick(c).then((newCall) =>
                   replaceCallWithUpdatedCall(setCalls, newCall)

@@ -4,6 +4,7 @@ import { ScreenContent } from "./components/ScreenContent";
 import { useCalls } from "./_utils/useCalls";
 import { Grommet } from "grommet";
 import { theme } from "./theme";
+import { primaryLightest } from "./_utils/colors";
 
 const Container = styled.div`
   position: absolute;
@@ -20,7 +21,7 @@ const SimulatedScreen = styled.div`
   position: absolute;
   width: 376px;
   height: 666px;
-  background: ${(p) => (p.isLoading ? "blue" : "white")};
+  background-color: ${primaryLightest.hex()};
   border-radius: 3px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.9);
   display: flex;
